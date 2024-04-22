@@ -3,15 +3,20 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:peludos_pet/widgets/button_widget.dart';
 
 class FormLogin extends StatefulWidget {
-  const FormLogin({super.key});
+  const FormLogin({super.key, required this.indice});
+
+  final int indice;
 
   @override
-  State<FormLogin> createState() => _FormLoginState();
+  State<FormLogin> createState() => _FormLoginState(indice);
 }
 
 class _FormLoginState extends State<FormLogin> {
-
   int _selectedIndex = 0;
+
+  _FormLoginState(int indice) {
+    _selectedIndex = indice;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +47,7 @@ class _FormLoginState extends State<FormLogin> {
                             child: GestureDetector(
                               onTap: () {
                                 setState(() {
-                                  _selectedIndex = 0;
+                                  _selectedIndex = widget.indice;
                                 });
                               },
                               child: Container(
@@ -50,13 +55,17 @@ class _FormLoginState extends State<FormLogin> {
                                 decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color.fromARGB(255, 100, 9, 9).withOpacity(0.8),
+                                      color:
+                                          const Color.fromARGB(255, 100, 9, 9)
+                                              .withOpacity(0.8),
                                       spreadRadius: -4,
                                       blurRadius: 10,
                                       offset: const Offset(5, 9),
                                     ),
                                   ],
-                                  color: _selectedIndex == 0 ? const Color(0xffFFEFEF) : Colors.grey,
+                                  color: _selectedIndex == 0
+                                      ? const Color(0xffFFEFEF)
+                                      : Colors.grey,
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(25.0),
                                   ),
@@ -65,7 +74,9 @@ class _FormLoginState extends State<FormLogin> {
                                 child: Text(
                                   'Login',
                                   style: TextStyle(
-                                    color: _selectedIndex == 0 ? Colors.black : Colors.white,
+                                    color: _selectedIndex == 0
+                                        ? Colors.black
+                                        : Colors.white,
                                     fontSize: 18.0,
                                   ),
                                 ),
@@ -84,13 +95,17 @@ class _FormLoginState extends State<FormLogin> {
                                 decoration: BoxDecoration(
                                   boxShadow: [
                                     BoxShadow(
-                                      color: const Color.fromARGB(255, 100, 9, 9).withOpacity(0.8),
+                                      color:
+                                          const Color.fromARGB(255, 100, 9, 9)
+                                              .withOpacity(0.8),
                                       spreadRadius: -4,
                                       blurRadius: 10,
                                       offset: const Offset(5, 9),
                                     ),
                                   ],
-                                  color: _selectedIndex == 1 ? const Color(0xffFFEFEF) : Colors.grey,
+                                  color: _selectedIndex == 1
+                                      ? const Color(0xffFFEFEF)
+                                      : Colors.grey,
                                   borderRadius: const BorderRadius.all(
                                     Radius.circular(25.0),
                                   ),
@@ -99,7 +114,9 @@ class _FormLoginState extends State<FormLogin> {
                                 child: Text(
                                   'Sign Up',
                                   style: TextStyle(
-                                    color: _selectedIndex == 1 ? Colors.black : Colors.white,
+                                    color: _selectedIndex == 1
+                                        ? Colors.black
+                                        : Colors.white,
                                     fontSize: 18.0,
                                   ),
                                 ),
@@ -113,12 +130,13 @@ class _FormLoginState extends State<FormLogin> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            _selectedIndex == 0 ? 'Welcome to ' : 'Register to ',
+                            _selectedIndex == 0
+                                ? 'Welcome to '
+                                : 'Register to ',
                             style: GoogleFonts.inter(
                               fontSize: 25.0,
                               fontWeight: FontWeight.bold,
                               color: Colors.black,
-                              
                             ),
                           ),
                           Text(
@@ -132,20 +150,21 @@ class _FormLoginState extends State<FormLogin> {
                         ],
                       ),
                       const SizedBox(height: 20.0),
-                      _selectedIndex == 0 ? _buildLoginForm() : _buildSignUpForm(),
-                      
+                      _selectedIndex == 0
+                          ? _buildLoginForm()
+                          : _buildSignUpForm(),
                       const SizedBox(height: 20.0),
-                      
                       SizedBox(
-                        width: double.infinity, // Ocupa todo el ancho disponible
-                        height: 50.0, // Altura deseada del botón
-                        child: Button(text: _selectedIndex == 0 ? 'Login' : 'Sign Up', onPressed: () {
-                          // Lógica para iniciar sesión o registrarse
-
-                        })
-                      ),
+                          width:
+                              double.infinity, // Ocupa todo el ancho disponible
+                          height: 50.0, // Altura deseada del botón
+                          child: Button(
+                              text: _selectedIndex == 0 ? 'Login' : 'Sign Up',
+                              onPressed: () {
+                                // Lógica para iniciar sesión o registrarse
+                              })),
                       const SizedBox(height: 20.0),
-                      if (_selectedIndex== 0)
+                      if (_selectedIndex == 0)
                         GestureDetector(
                           onTap: () {
                             // Lógica para recuperar la contraseña
@@ -168,59 +187,59 @@ class _FormLoginState extends State<FormLogin> {
       ),
     );
   }
-  
+
   _buildLoginForm() {
     return Column(
-    children: [
-      // Agrega los campos del formulario de inicio de sesión aquí
-      // Por ejemplo:
-      TextFormField(
-        decoration: const InputDecoration(
-          labelText: 'Email',
-          // Otros atributos de decoración
+      children: [
+        // Agrega los campos del formulario de inicio de sesión aquí
+        // Por ejemplo:
+        TextFormField(
+          decoration: const InputDecoration(
+            labelText: 'Email',
+            // Otros atributos de decoración
+          ),
         ),
-      ),
-      TextFormField(
-        obscureText: true,
-        decoration: const InputDecoration(
-          labelText: 'Password',
-          // Otros atributos de decoración
+        TextFormField(
+          obscureText: true,
+          decoration: const InputDecoration(
+            labelText: 'Password',
+            // Otros atributos de decoración
+          ),
         ),
-      ),
-    ],
-  );
+      ],
+    );
   }
-  
+
   _buildSignUpForm() {
     return Column(
-    children: [
-      TextFormField(
-        decoration: const InputDecoration(
-          labelText: 'Name',
+      children: [
+        TextFormField(
+          decoration: const InputDecoration(
+            labelText: 'Name',
+          ),
         ),
-      ),
-      TextFormField(
-        decoration: const InputDecoration(
-          labelText: 'Email',
+        TextFormField(
+          decoration: const InputDecoration(
+            labelText: 'Email',
+          ),
         ),
-      ),
-      TextFormField(
-        decoration: const InputDecoration(
-          labelText: 'Phone Number',
+        TextFormField(
+          decoration: const InputDecoration(
+            labelText: 'Phone Number',
+          ),
         ),
-      ),
-      TextFormField(
-        decoration: const InputDecoration(
-          labelText: 'address',
+        TextFormField(
+          decoration: const InputDecoration(
+            labelText: 'address',
+          ),
         ),
-      ),
-      TextFormField(
-        obscureText: true,
-        decoration: const InputDecoration(
-          labelText: 'Password',
+        TextFormField(
+          obscureText: true,
+          decoration: const InputDecoration(
+            labelText: 'Password',
+          ),
         ),
-      ),
-    ],
-  );
+      ],
+    );
   }
 }

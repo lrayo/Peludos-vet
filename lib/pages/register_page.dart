@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peludos_pet/widgets/fondo.dart';
-import 'package:peludos_pet/widgets/formRegister_widget.dart';
+import 'package:peludos_pet/widgets/form_widget.dart';
 
 class Register extends StatelessWidget {
   const Register({super.key});
@@ -11,7 +11,7 @@ class Register extends StatelessWidget {
       body: Stack(
         children: [
           Fondo(),
-          Formregister()
+          FormLogin(indice: 1)
         ],
       )
     );

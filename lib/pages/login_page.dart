@@ -16,7 +16,7 @@ class _LoginState extends State<Login> {
         body: Stack(
       children: [
         Fondo(),
-        FormLogin()
+        FormLogin(indice: 0)
       ],
     ));
   }
