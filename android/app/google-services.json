@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "343584925408",
+    "project_id": "peludospet-285e2",
+    "storage_bucket": "peludospet-285e2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:343584925408:android:6f55d64592d0d275b2d285",
+        "android_client_info": {
+          "package_name": "com.example.peludos_pet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAvRLVQknJiaNKr5-0z9wBi8WmCxWBQYRM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

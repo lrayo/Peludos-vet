@@ -1,46 +1,34 @@
 import 'package:flutter/material.dart';
-import 'package:peludos_pet/pages/chat_page.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:peludos_pet/app/app.dart';
+import 'package:peludos_pet/app/inject_dependencies.dart';
 
-import 'package:peludos_pet/pages/home_page.dart';
-import 'package:peludos_pet/pages/record_evaluation_page.dart';
-import 'package:peludos_pet/pages/record_page.dart';
-import 'package:peludos_pet/pages/result_pdf_page.dart';
-import 'package:peludos_pet/pages/result_page.dart';
-import 'package:peludos_pet/pages/welcome_page.dart';
-import 'package:peludos_pet/pages/login_page.dart';
-import 'package:peludos_pet/pages/register_page.dart';
-import 'package:peludos_pet/widgets/page/welcome/body_widget.dart';
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+  injectDependencies();
 
-void main() {
   runApp(const MyApp());
 }
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  // final FirebaseFirestore db = FirebaseFirestore.instance;
+  // final CollectionReference users = db.collection('VetPeludos');
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Peludos Pet´s',
-      initialRoute: '/home',
-      routes: {
-        '/': (context) => const Welcome(),
-        '/login': (context) => const Login(),
-        '/register': (context) => const Register(),
-        '/home':(context) => const Home(),
-        '/record':(context) => const Record(),
-        '/Evaluation':(context) => const Evaluation(),
-        '/result':(context) => const Result(),
-        '/resultPdf':(context) => const ResutlPdf(),
-        '/body':(context) => const BodyWidget(),
-        '/cjat':(context) => const Chat(),
-      },
-      onGenerateRoute: (setting) {
-        return MaterialPageRoute(
-          builder: (context) => const Login(),
-        );
-      },
-    );
-  }
-}
+  // final Map<String, dynamic> data = <String, dynamic>{
+  //   'email': 'lrayo@gmail.com',
+  //   'name': 'Luis Rayo',
+  //   'number phone': '123',
+  // };
+
+  // final newRegister = await users.doc('UinsBZwhcFpLKFK0Qj6c').set(data);
+  // newRegister;
+
+  // final allcollection = await db.collection("VetPeludos").get();
+  // for (var element in allcollection.docs) {
+  //   if (kDebugMode) {
+  //     print(element.data());
+  //   }
+  // }
+
+ 
+
