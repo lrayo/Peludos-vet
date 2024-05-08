@@ -1,10 +1,13 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:peludos_pet/app/domain/inputs/pet_up_data.dart';
+
 import 'package:peludos_pet/app/domain/repositories/user_repository.dart';
 import 'package:peludos_pet/app/domain/responses/user_response.dart';
-import 'package:peludos_pet/app/view/global_controller/session_controller.dart';
 import 'package:peludos_pet/app/view/pages/chat/chat_state.dart';
 
 class ChatController extends StateNotifier<ChatState> {
@@ -12,9 +15,46 @@ class ChatController extends StateNotifier<ChatState> {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  final _userRepository = Get.find<UserRepository>();
-  
-  final userId = FirebaseAuth.instance.currentUser!.uid;
+  final UserRepository _userRepository = Get.find<UserRepository>();
+  final String userId = FirebaseAuth.instance.currentUser!.uid;
+
+  Future<void> selectAndUploadImage(BuildContext context) async {
+    final picker = ImagePicker();
+    final XFile? image = await picker.pickImage(
+      source: ImageSource.gallery,
+    );
+
+    if (image != null) {
+      // Subir la imagen y obtener la URL
+      final imageUrl = await _userRepository.imagePets(userId, image);
+      state = state.copyWith(urlImage: imageUrl!);
+    }
+  }
+
+  // Método para el botón de la cámara
+  Future<void> uploadFromCamera(BuildContext context) async {
+    final picker = ImagePicker();
+    final XFile? image = await picker.pickImage(source: ImageSource.camera);
+
+    if (image != null) {
+      final imageUrl = await _userRepository.imagePets(userId, image);
+      if (imageUrl != null) {
+        state = state.copyWith(urlImage: imageUrl);
+
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text("Image uploaded. URL: $imageUrl")),
+        );
+      } else {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text("Failed to upload image")),
+        );
+      }
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("No image selected")),
+      );
+    }
+  }
 
   Future<UserResponse> submit() {
     return _userRepository.addPets(
@@ -57,10 +97,14 @@ class ChatController extends StateNotifier<ChatState> {
   }
 }
 
-  // void onVaccinationChanged(DateTime? date) {
-  //   state = state.copyWith(vaccination: date);
-  // }
+// Future<XFile?> getimage() async {
+//     final ImagePicker picker = ImagePicker();
+//     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
+//     return image!;
+//   }
 
-  // void onDewormingChanged(DateTime? date) {
-  //   state = state.copyWith(deworming: date);
-  // }
+//   Future<XFile?> getimageCamera() async {
+//     final ImagePicker picker = ImagePicker();
+//     final XFile? image = await picker.pickImage(source: ImageSource.camera);
+//     return image!;
+//   }
