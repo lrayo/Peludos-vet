@@ -1,7 +1,7 @@
 import 'package:flutter/widgets.dart' show Widget, BuildContext;
-import 'package:peludos_pet/app/view/pages/chat/chat_page.dart';
 import 'package:peludos_pet/app/view/pages/home/home_page.dart';
 import 'package:peludos_pet/app/view/pages/login/login_page.dart';
+import 'package:peludos_pet/app/view/pages/pets/pets_page.dart';
 import 'package:peludos_pet/app/view/pages/record/record_evaluation_page.dart';
 import 'package:peludos_pet/app/view/pages/record/record_page.dart';
 import 'package:peludos_pet/app/view/pages/register/register_page.dart';
@@ -21,6 +21,6 @@ Map<String, Widget Function(BuildContext)> get appRoutes => {
   Routes.RESULT: (context) => const Result(),
   Routes.RESULTPDF: (context) => const ResutlPdf(),
   Routes.RESET_PASSWORD: (context) => const ResetPassword(),
-  Routes.CHAT: (context) => const Chat(),
+  Routes.CHAT: (context) => const Pets(),
 
 };

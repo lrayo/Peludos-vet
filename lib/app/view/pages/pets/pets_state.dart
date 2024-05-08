@@ -2,12 +2,12 @@
 
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-part 'chat_state.freezed.dart';
+part 'pets_state.freezed.dart';
 
 @freezed
-class ChatState with _$ChatState{
+class PetsState with _$PetsState{
   
-  factory ChatState({
+  factory PetsState({
     @Default('') String name,
     @Default('') String weight,
     @Default('') String breed,
@@ -15,7 +15,7 @@ class ChatState with _$ChatState{
     @Default('') String urlImage,
     @Default('') String age,
     @Default(false) bool termsOK,
-    }) = _ChatState;
-  static ChatState get initialState => ChatState();
+    }) = _PetsState;
+  static PetsState get initialState => PetsState();
 
 }

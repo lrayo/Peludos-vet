@@ -23,7 +23,6 @@ class ImageRepositoryImpl extends ImageRepository {
 
       return await ref.getDownloadURL(); // Devuelve la URL de la imagen subida
     } catch (e) {
-      print("Error uploading image: $e");
       return '"Error uploading image: $e"'; // Retorna null si hay un error
     }
   }

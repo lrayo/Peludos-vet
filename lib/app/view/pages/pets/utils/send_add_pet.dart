@@ -3,10 +3,10 @@ import 'package:flutter_meedu/ui.dart';
 import 'package:peludos_pet/app/view/global_widget/dialogs/dialogs.dart';
 import 'package:peludos_pet/app/view/global_widget/dialogs/progress_dialog.dart';
 import 'package:peludos_pet/app/view/routes/routes.dart';
-import '../chat_page.dart' show chatprovider;
+import '../pets_page.dart' show petsprovider;
 
 Future<void> sendAddPet(BuildContext context) async{
-  final controller = chatprovider.read;
+  final controller = petsprovider.read;
   final isvalid = controller.formKey.currentState!.validate();
 
   if (isvalid) {

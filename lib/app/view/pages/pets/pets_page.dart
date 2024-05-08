@@ -2,29 +2,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/ui.dart';
-import 'package:peludos_pet/app/utils/address_validator.dart';
 import 'package:peludos_pet/app/utils/name_validator.dart';
 import 'package:peludos_pet/app/utils/phone_validator.dart';
 import 'package:peludos_pet/app/utils/weight_validator.dart';
 import 'package:peludos_pet/app/view/global_widget/custon_input_field.dart';
-import 'package:peludos_pet/app/view/pages/chat/chat_controller.dart';
-import 'package:peludos_pet/app/view/pages/chat/chat_state.dart';
-import 'package:peludos_pet/app/view/pages/chat/utils/send_add_pet.dart';
+import 'package:peludos_pet/app/view/pages/pets/controller/pet_controller.dart';
+import 'package:peludos_pet/app/view/pages/pets/pets_state.dart';
+import 'package:peludos_pet/app/view/pages/pets/utils/send_add_pet.dart';
 
-final chatprovider = StateProvider<ChatController, ChatState>(
-  (_) => ChatController(ChatState()),
+final petsprovider = StateProvider<PetsController, PetsState>(
+  (_) => PetsController(PetsState()),
 );
 
-class Chat extends StatelessWidget {
-  const Chat({super.key});
+class Pets extends StatelessWidget {
+  const Pets({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return ProviderListener<ChatController>(
-      provider: chatprovider,
+    return ProviderListener<PetsController>(
+      provider: petsprovider,
       builder: (_, controller) {
         return Consumer(builder: (context, ref, _) {
-          final stado = ref.watch(chatprovider);
+          final stado = ref.watch(petsprovider);
 
           return Scaffold(
             backgroundColor: Colors.white,

@@ -1,8 +1,8 @@
 
 import 'package:flutter_meedu/meedu.dart';
-import 'package:peludos_pet/app/view/pages/chat/chat_state.dart';
+import 'package:peludos_pet/app/view/pages/pets/pets_state.dart';
 
-class UserController extends StateNotifier<ChatState> {
+class UserController extends StateNotifier<PetsState> {
   UserController(super.initialState);
 
   submit() {
