@@ -3,7 +3,7 @@ import 'package:flutter_meedu/ui.dart';
 import 'package:peludos_pet/app/view/global_widget/dialogs/dialogs.dart';
 import 'package:peludos_pet/app/view/global_widget/dialogs/progress_dialog.dart';
 import 'package:peludos_pet/app/view/routes/routes.dart';
-import '../pets_page.dart' show petsprovider;
+import '../pets_page.dart';
 
 Future<void> sendAddPet(BuildContext context) async{
   final controller = petsprovider.read;

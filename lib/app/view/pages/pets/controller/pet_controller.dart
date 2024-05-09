@@ -9,6 +9,7 @@ import 'package:peludos_pet/app/domain/inputs/pet_up_data.dart';
 import 'package:peludos_pet/app/domain/repositories/user_repository.dart';
 import 'package:peludos_pet/app/domain/responses/user_response.dart';
 import 'package:peludos_pet/app/view/pages/pets/pets_state.dart';
+import 'package:uuid/uuid.dart';
 
 class PetsController extends StateNotifier<PetsState> {
   PetsController(super.initialState);
@@ -60,6 +61,8 @@ class PetsController extends StateNotifier<PetsState> {
     return _userRepository.addPets(
         userId,
         PetUpData(
+          petId: Uuid().v4(),
+          color: state.color,
           name: state.name,
           breed: state.breed,
           age: state.age,
@@ -97,14 +100,3 @@ class PetsController extends StateNotifier<PetsState> {
   }
 }
 
-// Future<XFile?> getimage() async {
-//     final ImagePicker picker = ImagePicker();
-//     final XFile? image = await picker.pickImage(source: ImageSource.gallery);
-//     return image!;
-//   }
-
-//   Future<XFile?> getimageCamera() async {
-//     final ImagePicker picker = ImagePicker();
-//     final XFile? image = await picker.pickImage(source: ImageSource.camera);
-//     return image!;
-//   }

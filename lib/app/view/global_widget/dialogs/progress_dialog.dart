@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 abstract class ProgressDialog {
+  late BuildContext _dialogContext;
   static void show(BuildContext context) {
     showCupertinoModalPopup(
         context: context, builder: (_) => PopScope(
@@ -15,5 +16,9 @@ abstract class ProgressDialog {
             ),
           ),
           ));
+  }
+
+  void dismiss() {
+    Navigator.pop(_dialogContext); // Cerrar el diálogo
   }
 }

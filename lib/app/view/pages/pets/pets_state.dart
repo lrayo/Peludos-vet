@@ -1,6 +1,7 @@
 // ignore: depend_on_referenced_packages
 
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:uuid/uuid.dart';
 
 part 'pets_state.freezed.dart';
 
@@ -8,6 +9,7 @@ part 'pets_state.freezed.dart';
 class PetsState with _$PetsState{
   
   factory PetsState({
+    @Default('') String petId,
     @Default('') String name,
     @Default('') String weight,
     @Default('') String breed,

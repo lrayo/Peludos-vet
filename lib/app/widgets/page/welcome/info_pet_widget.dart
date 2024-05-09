@@ -3,14 +3,21 @@ import 'package:google_fonts/google_fonts.dart';
 
 class Pet extends StatelessWidget {
   const Pet({
-    super.key, required this.imagePath, required this.name, required this.weight, required this.breed, required this.color,
+    super.key,
+    required this.imagePath,
+    required this.name,
+    required this.weight,
+    required this.breed,
+    required this.color,
+    required this.age,
   });
 
   final String imagePath; // Ruta de la imagen
-  final String name;      // Nombre de la mascota
-  final String weight;    // Peso de la mascota
-  final String breed;     // Raza de la mascota
-  final String color;     // Color de la mascota
+  final String name; // Nombre de la mascota
+  final String weight; // Peso de la mascota
+  final String breed; // Raza de la mascota
+  final String color; // Color de la mascota
+  final String age; // Edad de la mascota
 
   @override
   Widget build(BuildContext context) {
@@ -24,20 +31,22 @@ class Pet extends StatelessWidget {
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(100),
               image: DecorationImage(
-                image: AssetImage(imagePath),
+                image: NetworkImage(imagePath),
                 fit: BoxFit.fill,
               ),
             ),
           ),
         ),
         SizedBox(
-          width: 260.0, 
+          width: 260.0,
           child: Column(
             children: [
-              PetDetail(title: 'Name:', detail: name), // Detalle con título y valor
+              PetDetail(
+                  title: 'Name:', detail: name), // Detalle con título y valor
               PetDetail(title: 'Weight:', detail: weight),
               PetDetail(title: 'Breed:', detail: breed),
               PetDetail(title: 'Color:', detail: color),
+              PetDetail(title: 'Age:', detail: age),
             ],
           ),
         ),

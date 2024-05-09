@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$PetsState {
+  String get petId => throw _privateConstructorUsedError;
   String get name => throw _privateConstructorUsedError;
   String get weight => throw _privateConstructorUsedError;
   String get breed => throw _privateConstructorUsedError;
@@ -35,7 +36,8 @@ abstract class $PetsStateCopyWith<$Res> {
       _$PetsStateCopyWithImpl<$Res, PetsState>;
   @useResult
   $Res call(
-      {String name,
+      {String petId,
+      String name,
       String weight,
       String breed,
       String color,
@@ -57,6 +59,7 @@ class _$PetsStateCopyWithImpl<$Res, $Val extends PetsState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? petId = null,
     Object? name = null,
     Object? weight = null,
     Object? breed = null,
@@ -66,6 +69,10 @@ class _$PetsStateCopyWithImpl<$Res, $Val extends PetsState>
     Object? termsOK = null,
   }) {
     return _then(_value.copyWith(
+      petId: null == petId
+          ? _value.petId
+          : petId // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -107,7 +114,8 @@ abstract class _$$PetsStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String name,
+      {String petId,
+      String name,
       String weight,
       String breed,
       String color,
@@ -127,6 +135,7 @@ class __$$PetsStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? petId = null,
     Object? name = null,
     Object? weight = null,
     Object? breed = null,
@@ -136,6 +145,10 @@ class __$$PetsStateImplCopyWithImpl<$Res>
     Object? termsOK = null,
   }) {
     return _then(_$PetsStateImpl(
+      petId: null == petId
+          ? _value.petId
+          : petId // ignore: cast_nullable_to_non_nullable
+              as String,
       name: null == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
@@ -172,7 +185,8 @@ class __$$PetsStateImplCopyWithImpl<$Res>
 
 class _$PetsStateImpl implements _PetsState {
   _$PetsStateImpl(
-      {this.name = '',
+      {this.petId = '',
+      this.name = '',
       this.weight = '',
       this.breed = '',
       this.color = '',
@@ -180,6 +194,9 @@ class _$PetsStateImpl implements _PetsState {
       this.age = '',
       this.termsOK = false});
 
+  @override
+  @JsonKey()
+  final String petId;
   @override
   @JsonKey()
   final String name;
@@ -204,7 +221,7 @@ class _$PetsStateImpl implements _PetsState {
 
   @override
   String toString() {
-    return 'PetsState(name: $name, weight: $weight, breed: $breed, color: $color, urlImage: $urlImage, age: $age, termsOK: $termsOK)';
+    return 'PetsState(petId: $petId, name: $name, weight: $weight, breed: $breed, color: $color, urlImage: $urlImage, age: $age, termsOK: $termsOK)';
   }
 
   @override
@@ -212,6 +229,7 @@ class _$PetsStateImpl implements _PetsState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$PetsStateImpl &&
+            (identical(other.petId, petId) || other.petId == petId) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.weight, weight) || other.weight == weight) &&
             (identical(other.breed, breed) || other.breed == breed) &&
@@ -224,7 +242,7 @@ class _$PetsStateImpl implements _PetsState {
 
   @override
   int get hashCode => Object.hash(
-      runtimeType, name, weight, breed, color, urlImage, age, termsOK);
+      runtimeType, petId, name, weight, breed, color, urlImage, age, termsOK);
 
   @JsonKey(ignore: true)
   @override
@@ -235,7 +253,8 @@ class _$PetsStateImpl implements _PetsState {
 
 abstract class _PetsState implements PetsState {
   factory _PetsState(
-      {final String name,
+      {final String petId,
+      final String name,
       final String weight,
       final String breed,
       final String color,
@@ -243,6 +262,8 @@ abstract class _PetsState implements PetsState {
       final String age,
       final bool termsOK}) = _$PetsStateImpl;
 
+  @override
+  String get petId;
   @override
   String get name;
   @override

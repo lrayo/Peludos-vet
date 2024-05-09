@@ -138,7 +138,7 @@ class Pets extends StatelessWidget {
                             onPressed: () {
                               sendAddPet(context);
                             },
-                            child: const Text('Save'),
+                            child: const Text('Add Pet'),
                           )
                         ],
                       ),

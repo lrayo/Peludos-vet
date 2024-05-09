@@ -11,6 +11,8 @@ abstract class Routes {
   static const RESULTPDF = '/resultPdf';
   static const CHAT = '/chat';
   static const RESET_PASSWORD = '/reset_password';
+  static const PETS = '/pets';
+  static const PETUPDATE = '/petupdate';
   static const PROFILE = '/profile';
   static const SETTINGS = '/settings';
   static const NOT_FOUND = '/not-found';
