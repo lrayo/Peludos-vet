@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/ui.dart';
 import 'package:peludos_pet/app/domain/responses/sing_up_response.dart';
@@ -37,7 +39,6 @@ Future<void> sendRegisterForm(BuildContext context) async {
       }
 
       Dialogs.alert(
-        // ignore: use_build_context_synchronously
         context,
         title: 'Error',
         content: content,

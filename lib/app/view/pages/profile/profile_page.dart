@@ -48,12 +48,11 @@ class Progfile extends ConsumerWidget {
       final String? value = await showInputDialog(context,title: "Enter new phone number");
 
       if (value != null && value.isNotEmpty) {
-        // Actualizar el campo "phone" en Firestore
         await FirebaseFirestore.instance
             .collection("users")
             .doc(userId)
             .update({
-          "phone": value, // Usa el valor ingresado
+          "phone": value, 
         });
       } 
     } catch (e) {
@@ -68,15 +67,14 @@ class Progfile extends ConsumerWidget {
       final value = await showInputDialog(context);
 
       if (value != null && value.isNotEmpty) {
-        // Actualizar el campo "phone" en Firestore
         await FirebaseFirestore.instance
             .collection("users")
             .doc(userId)
             .update({
-          "address": value, // Usa el valor ingresado
+          "address": value, 
         });
 
-        // Mostrar confirmación de éxito
+
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Address updated")),
         );
@@ -112,11 +110,10 @@ class Progfile extends ConsumerWidget {
           }
 
           final userDoc = snapshot.data!;
-          final phone = userDoc['phone'] ?? 'No phone'; // Recuperar teléfono
+          final phone = userDoc['phone'] ?? 'No phone'; 
           final address =
-              userDoc['address'] ?? 'No address'; // Recuperar dirección
+              userDoc['address'] ?? 'No address'; 
 
-          // Pasar información al Progfile
           return ListView(
             padding: const EdgeInsets.all(20.0),
             children: [

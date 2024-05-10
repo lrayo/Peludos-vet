@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/ui.dart';
 import 'package:peludos_pet/app/view/global_controller/session_controller.dart';
@@ -52,10 +51,10 @@ class PetUp extends ConsumerWidget {
           final userDoc = snapshot.data!;
           final pets = userDoc['pets'] as List<dynamic>;
 
-          // Buscar la mascota con el nombre que coincide con el argumento
+          // Buscar la mascota con el id que coincide con el argumento
           final matchingPet = pets.firstWhere(
             (pet) => pet['petId'] == petID,
-            orElse: () => null, // Si no se encuentra, devolver `null`
+            orElse: () => null, 
           );
 
           if (matchingPet == null) {
@@ -71,7 +70,7 @@ class PetUp extends ConsumerWidget {
           final color = matchingPet['color'];
           final letter = name.isNotEmpty ? name[0] : '';
 
-          // Pasar información al Progfile
+
           return ListView(
             padding: const EdgeInsets.all(20.0),
             children: [
@@ -145,12 +144,6 @@ class PetUp extends ConsumerWidget {
                     updatePetName(context, user.uid, 'age',
                       petID, age, "Enter new pet name");
                   }),
-              // CupertinoSwitch(
-              //   value: isDark,
-              //   onChanged: (_) {
-              //     themeProvider.read.toggle();
-              //   },
-              // )
             ],
           );
         });

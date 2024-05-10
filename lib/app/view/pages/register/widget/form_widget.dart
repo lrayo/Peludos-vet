@@ -163,8 +163,8 @@ class _FormLoginState extends State<FormLogin> {
                       const SizedBox(height: 20.0),
                       SizedBox(
                           width:
-                              double.infinity, // Ocupa todo el ancho disponible
-                          height: 50.0, // Altura deseada del botón
+                              double.infinity, 
+                          height: 50.0, 
                           child: Button(
                               text: _selectedIndex == 0 ? 'Login' : 'Sign Up',
                               onPressed: () {
@@ -173,7 +173,6 @@ class _FormLoginState extends State<FormLogin> {
                                 } else {
                                   sendRegisterForm(context);
                                 }
-                                // Lógica para iniciar sesión o registrarse
                               })),
                       const SizedBox(height: 10.0),
                       if (_selectedIndex == 0)

@@ -52,14 +52,14 @@ class BodyWidget extends ConsumerWidget {
                   Pet(
                     imagePath: photo,
                     name: name,
-                    weight: "$weight kg", // Convertir el peso a string
+                    weight: "$weight kg", 
                     breed: breed,
                     color: color,
-                    age: '$age years', // Convertir la edad a string
+                    age: '$age years', 
                   ),
                   NextVacDew(
                     vaccinationDate:
-                        DateTime.now(), // Puedes usar datos reales aquí
+                        DateTime.now(), 
                     dewormingDate: DateTime.now(),
                   ),
                   const ButtonsRecRes(),
@@ -68,7 +68,6 @@ class BodyWidget extends ConsumerWidget {
               ),
             );
           }).toList();
-          // Pasar información al Progfile
           return ListView(
             children: [
               Padding(

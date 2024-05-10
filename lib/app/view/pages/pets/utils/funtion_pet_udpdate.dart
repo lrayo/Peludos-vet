@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:peludos_pet/app/view/global_widget/dialogs/dialogs.dart';
@@ -8,14 +10,13 @@ Future<void> updatePetName(
   String userId,
   String key,
   String petID,
-  String petName, // Nombre actual de la mascota
-  String dialogTitle, // Título para el diálogo de entrada
+  String petName, 
+  String dialogTitle, 
 ) async {
   try {
     final String? value = await showInputDialog(context, title: dialogTitle );
 
     if (value != null && value.isNotEmpty) {
-      // Obtener el documento del usuario
       final userDoc = await FirebaseFirestore.instance
           .collection("users")
           .doc(userId)
@@ -27,18 +28,15 @@ Future<void> updatePetName(
 
       final pets = userDoc['pets'] as List<dynamic>;
 
-      // Encontrar el índice de la mascota a actualizar
       final petIndex = pets.indexWhere((pet) => pet['petId'] == petID);
 
       if (petIndex == -1) {
         throw Exception("Pet not found with the name: $petName");
       }
-
-      // Crear una copia de la lista y actualizar el campo `name`
       final updatedPets = List.from(pets);
       updatedPets[petIndex] = {
         ...updatedPets[petIndex],
-        key: value, // Cambiar el nombre de la mascota
+        key: value, 
       };
 
       // Actualizar la lista de mascotas en Firestore
@@ -46,7 +44,7 @@ Future<void> updatePetName(
           .collection("users")
           .doc(userId)
           .update({
-        'pets': updatedPets, // Reemplazar con la lista actualizada
+        'pets': updatedPets, 
       });
     } else {
       Dialogs.alert(context,

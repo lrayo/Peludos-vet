@@ -28,18 +28,15 @@ class RegisterController extends StateNotifier<RegisterState> {
       final user = userCredential.user;
 
       if (user != null) {
-        // Actualizar displayName
         await user.updateDisplayName(
            state.name,
         );
 
-        // Guardar información adicional en Firestore
         await FirebaseFirestore.instance.collection("users").doc(user.uid).set({
           "phone": state.phone,
           "address": state.address,
         });
 
-        // Configurar usuario en SessionController
         _sessionController.setUser(user);
 
         return SingUpResponse(null, user); // No error

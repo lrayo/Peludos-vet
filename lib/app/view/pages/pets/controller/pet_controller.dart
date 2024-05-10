@@ -61,7 +61,7 @@ class PetsController extends StateNotifier<PetsState> {
     return _userRepository.addPets(
         userId,
         PetUpData(
-          petId: Uuid().v4(),
+          petId: const Uuid().v4(),
           color: state.color,
           name: state.name,
           breed: state.breed,

@@ -17,24 +17,6 @@ void main() async {
   runApp(const MyApp());
 }
 
-  // final FirebaseFirestore db = FirebaseFirestore.instance;
-  // final CollectionReference users = db.collection('VetPeludos');
-
-  // final Map<String, dynamic> data = <String, dynamic>{
-  //   'email': 'lrayo@gmail.com',
-  //   'name': 'Luis Rayo',
-  //   'number phone': '123',
-  // };
-
-  // final newRegister = await users.doc('UinsBZwhcFpLKFK0Qj6c').set(data);
-  // newRegister;
-
-  // final allcollection = await db.collection("VetPeludos").get();
-  // for (var element in allcollection.docs) {
-  //   if (kDebugMode) {
-  //     print(element.data());
-  //   }
-  // }
 
  
 

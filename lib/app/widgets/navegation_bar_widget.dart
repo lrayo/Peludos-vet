@@ -26,8 +26,8 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
         ),
         BottomNavigationBarItem(
           backgroundColor: Colors.blue, // Color del fondo del cuadro del elemento seleccionado
-          icon: Icon(Icons.chat_bubble_sharp),
-          label: "Chat",
+          icon: Icon(Icons.add),
+          label: "Add Pet",
         ),
         BottomNavigationBarItem(
           backgroundColor: Colors.green,

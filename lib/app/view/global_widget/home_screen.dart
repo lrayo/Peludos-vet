@@ -7,13 +7,13 @@ import 'package:peludos_pet/app/widgets/header_widget.dart';
 import 'package:peludos_pet/app/widgets/navegation_bar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
-  final List<Widget> bodyWidget; // Widget para el cuerpo de la pantalla
+  final List<Widget> bodyWidget; 
   const HomeScreen({super.key, required this.bodyWidget});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        key: scaffoldKey, // Asignar el GlobalKey al Scaffold
+        key: scaffoldKey, 
         drawer: Drawer(
           child: ListView(
             children: [
@@ -68,11 +68,10 @@ class HomeScreen extends StatelessWidget {
         body: Stack(
           children: [
             ...bodyWidget,
-            // Usa el HeaderWidget como parte de la pantalla
             HeaderWidget(
               onMenuPressed: () {
                 scaffoldKey.currentState
-                    ?.openDrawer(); // Usa el GlobalKey para abrir el Drawer
+                    ?.openDrawer(); 
               },
             ),
           ],
