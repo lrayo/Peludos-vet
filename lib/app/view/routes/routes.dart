@@ -13,10 +13,12 @@ abstract class Routes {
   static const RESET_PASSWORD = '/reset_password';
   static const PETS = '/pets';
   static const VACCINATION = '/ vaccination';
+  static const DEWORMING = '/deworming';
   static const PETUPDATE = '/petupdate';
   static const PROFILE = '/profile';
   static const SETTINGS = '/settings';
   static const NOT_FOUND = '/not-found';
+
 }
 
 // //routes: {

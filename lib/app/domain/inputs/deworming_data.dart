@@ -11,7 +11,7 @@ class DewormingData {
 
   Map<String, dynamic> toJson() {
     return {
-      'fecha': dewormingDate.toIso8601String(),
+      'dewormingDate': dewormingDate.toIso8601String(),
       'namedeworming': namedeworming,
 
     };

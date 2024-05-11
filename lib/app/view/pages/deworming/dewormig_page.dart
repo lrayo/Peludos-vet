@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/ui.dart';
 import 'package:intl/intl.dart';
+import 'package:peludos_pet/app/utils/address_validator.dart';
 import 'package:peludos_pet/app/utils/name_validator.dart';
-import 'package:peludos_pet/app/utils/weight_validator.dart';
 import 'package:peludos_pet/app/view/global_widget/custon_input_field.dart';
 import 'package:peludos_pet/app/view/pages/deworming/controller/deworming_controller.dart';
 import 'package:peludos_pet/app/view/pages/deworming/dewormig_state.dart';
+import 'package:peludos_pet/app/view/pages/deworming/utils/send_add_deworming.dart';
 
 final dewormingprovider =
     StateProvider<DewormingController, DewormigState>(
@@ -15,14 +16,14 @@ final dewormingprovider =
               DewormigState( dewormingDate: DateTime.now(),
             )));
 
-class Vaccination extends StatefulWidget {
-  const Vaccination({super.key});
+class Deworming extends StatefulWidget {
+  const Deworming({super.key});
 
   @override
-  State<Vaccination> createState() => _VaccinationState();
+  State<Deworming> createState() => _DewormingState();
 }
 
-class _VaccinationState extends State<Vaccination> {
+class _DewormingState extends State<Deworming> {
   DateTime? selectedDate;
 
   void _selectDate(
@@ -49,7 +50,7 @@ class _VaccinationState extends State<Vaccination> {
     }
     
     return ProviderListener<DewormingController>(
-      provider: vaccinationprovider,
+      provider: dewormingprovider,
       builder: (_, controller) {
         return Consumer(builder: (context, ref, _) {
       controller.setPetId(petID); // Configurar el petId en el controlador
@@ -76,7 +77,7 @@ class _VaccinationState extends State<Vaccination> {
                           const SizedBox(height: 150.0),
                           const Center(
                             child: Text(
-                              'Vaccination',
+                              'Deworming',
                               style: TextStyle(
                                 fontSize: 30,
                                 fontWeight: FontWeight.bold,
@@ -87,7 +88,7 @@ class _VaccinationState extends State<Vaccination> {
                             label: 'Deworming Name',
                             onChanged: controller.onNameDewormingChanged,
                             validator: (text) {
-                              return isValidName(text!) ? null : 'Invalid name';
+                              return isValidAddress(text!) ? null : 'Invalid name';
                             },
                           ),
                           TextFormField(
@@ -111,7 +112,7 @@ class _VaccinationState extends State<Vaccination> {
                           CupertinoButton(
                             color: Colors.purple,
                             onPressed: () {
-                              sendAddDe(context);
+                              sendAddDeworming(context);
                             },
                             child: const Text('Add vaccination'),
                           )

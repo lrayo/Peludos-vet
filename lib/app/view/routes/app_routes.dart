@@ -1,5 +1,6 @@
 import 'package:flutter/widgets.dart' show Widget, BuildContext;
 import 'package:peludos_pet/app/view/pages/Vaccination/vaccination_page.dart';
+import 'package:peludos_pet/app/view/pages/deworming/dewormig_page.dart';
 import 'package:peludos_pet/app/view/pages/home/home_page.dart';
 import 'package:peludos_pet/app/view/pages/login/login_page.dart';
 import 'package:peludos_pet/app/view/pages/pets/pet_update_page.dart';
@@ -27,4 +28,5 @@ Map<String, Widget Function(BuildContext)> get appRoutes => {
   Routes.PETS: (context) => const Pets(),
   Routes.PETUPDATE: (context) => const PetUpdate(),
   Routes.VACCINATION: (context) => const Vaccination(),
+  Routes.DEWORMING: (context) => const Deworming(),
 };

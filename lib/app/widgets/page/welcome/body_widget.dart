@@ -6,6 +6,7 @@ import 'package:peludos_pet/app/view/routes/routes.dart';
 import 'package:peludos_pet/app/widgets/page/welcome/buttons_rec_res_widget.dart';
 import 'package:peludos_pet/app/widgets/page/welcome/dividers_widget.dart';
 import 'package:peludos_pet/app/widgets/page/welcome/info_pet_widget.dart';
+import 'package:peludos_pet/app/widgets/page/welcome/next_dew_wigget.dart';
 import 'package:peludos_pet/app/widgets/page/welcome/next_vac_dew_widget.dart';
 import 'package:peludos_pet/app/widgets/page/welcome/text_head_widget.dart';
 
@@ -69,15 +70,16 @@ class BodyWidget extends ConsumerWidget {
             final vaccinations = pet.containsKey('vaccinations')
                 ? pet['vaccinations'] as List<dynamic>
                 : <dynamic>[];
-            
+
             DateTime? vaccinationDate;
             if (vaccinations.isNotEmpty) {
               final lastVaccination = vaccinations.last;
               vaccinationDate = DateTime.parse(
-                  lastVaccination['fvaccinationDate']); // Convierte a DateTime
+                  lastVaccination['vaccinationDate']); // Convierte a DateTime
             } else {
               vaccinationDate = null;
             }
+            
             final dewormings = pet.containsKey('dewormings')
                 ? pet['dewormings'] as List<dynamic>
                 : <dynamic>[];
@@ -86,9 +88,9 @@ class BodyWidget extends ConsumerWidget {
             if (dewormings.isNotEmpty) {
               final lastDewormings = dewormings.last;
               dewormingDate = DateTime.parse(
-                  lastDewormings['fdewormingDate']); // Convierte a DateTime
+                  lastDewormings['dewormingDate']); // Convierte a DateTime
             } else {
-              vaccinationDate = null;
+              dewormingDate = null;
             }
 
             return GestureDetector(
@@ -111,11 +113,18 @@ class BodyWidget extends ConsumerWidget {
                       Navigator.pushNamed(context, Routes.VACCINATION,
                           arguments: petId);
                     },
-                    child: NextVacDew(
+                    child: NextVac(
                       vaccinationDate: vaccinationDate,
-                      dewormingDate: dewormingDate,
                     ),
                   ),
+                   GestureDetector(
+                  onTap: () {
+                    Navigator.pushNamed(context, Routes.DEWORMING, arguments: petId);
+                  },
+                  child: NextDew(
+                    dewormingDate: dewormingDate,
+                  ),
+                ),
                   const ButtonsRecRes(),
                   const Dividers(),
                 ],

@@ -12,7 +12,7 @@ class VaccinationData {
 
   Map<String, dynamic> toJson() {
     return {
-      'fvaccinationDate': vaccinationDate.toIso8601String(),
+      'vaccinationDate': vaccinationDate.toIso8601String(),
       'lote': lote,
       'nameVaccination': nameVaccination,
     };
