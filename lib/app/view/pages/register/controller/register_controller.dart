@@ -35,6 +35,7 @@ class RegisterController extends StateNotifier<RegisterState> {
         await FirebaseFirestore.instance.collection("users").doc(user.uid).set({
           "phone": state.phone,
           "address": state.address,
+          "pets": [],
         });
 
         _sessionController.setUser(user);

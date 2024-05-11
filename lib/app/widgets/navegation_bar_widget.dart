@@ -31,7 +31,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
         ),
         BottomNavigationBarItem(
           backgroundColor: Colors.green,
-          icon: Icon(Icons.list_alt),
+          icon: Icon(Icons.vaccines),
           label: "Results",
         )
       ],
@@ -48,7 +48,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
             break;
 
           case 2:
-            Navigator.pushNamed(context, Routes.RESULT);
+            Navigator.pushNamed(context, Routes.VACCINATION);
             break;
           default:
         }

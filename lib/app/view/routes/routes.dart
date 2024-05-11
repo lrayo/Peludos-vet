@@ -12,6 +12,7 @@ abstract class Routes {
   static const CHAT = '/chat';
   static const RESET_PASSWORD = '/reset_password';
   static const PETS = '/pets';
+  static const VACCINATION = '/ vaccination';
   static const PETUPDATE = '/petupdate';
   static const PROFILE = '/profile';
   static const SETTINGS = '/settings';

@@ -12,8 +12,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        key: scaffoldKey, 
+    return Scaffold( 
         drawer: Drawer(
           child: ListView(
             children: [

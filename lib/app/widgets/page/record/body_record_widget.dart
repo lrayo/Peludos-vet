@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:peludos_pet/app/widgets/page/welcome/info_pet_widget.dart';
 import 'package:peludos_pet/app/widgets/page/welcome/text_head_widget.dart';
 
 class BodyRecordWidget extends StatelessWidget {
@@ -24,14 +25,14 @@ class BodyRecordWidget extends StatelessWidget {
                     name: 'Lina Rios',
                     text: 'Welcome to ',
                   ),
-                  // Pet(
-                  //   imagePath: 'assets/Imagen de WhatsApp 2024-03-22 a las 14.05.38_6c49771c.jpg',
-                  //   name: 'Dante',
-                  //   weight: '5.5 kg',
-                  //   breed: 'Cat',
-                  //   color: 'Gris',
-                  //   age: '2 years',
-                  // ),
+                  Pet(
+                    imagePath: 'assets/Imagen de WhatsApp 2024-03-22 a las 14.05.38_6c49771c.jpg',
+                    name: 'Dante',
+                    weight: '5.5 kg',
+                    breed: 'Cat',
+                    color: 'Gris',
+                    age: '2 years',
+                  ),
                   
                 ],
               ),
