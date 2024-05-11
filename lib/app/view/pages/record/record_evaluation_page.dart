@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:peludos_pet/app/view/global_widget/home_screen.dart';
 import 'package:peludos_pet/app/widgets/page/record%20evaluation/card_record_evaluation_widget.dart';
-import 'package:peludos_pet/app/widgets/page/record/body_record_widget.dart';
+import 'package:peludos_pet/app/view/pages/record/widgets/body_record_widget.dart';
 
 class Evaluation extends StatelessWidget {
   const Evaluation({super.key});

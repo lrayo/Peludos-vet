@@ -4,7 +4,6 @@ import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/ui.dart';
 import 'package:intl/intl.dart';
 import 'package:peludos_pet/app/utils/address_validator.dart';
-import 'package:peludos_pet/app/utils/name_validator.dart';
 import 'package:peludos_pet/app/view/global_widget/custon_input_field.dart';
 import 'package:peludos_pet/app/view/pages/deworming/controller/deworming_controller.dart';
 import 'package:peludos_pet/app/view/pages/deworming/dewormig_state.dart';
