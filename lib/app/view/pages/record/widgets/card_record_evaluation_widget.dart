@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:peludos_pet/app/widgets/page/record%20evaluation/info_record_evaluation_widget.dart';
-import 'package:peludos_pet/app/widgets/page/welcome/text_head_widget.dart';
+import 'package:peludos_pet/app/view/pages/home/widgets/text_head_widget.dart';
+import 'package:peludos_pet/app/view/pages/record/widgets/info_record_evaluation_widget.dart';
 
 class CardRecordEvaluation extends StatelessWidget {
   const CardRecordEvaluation({super.key});

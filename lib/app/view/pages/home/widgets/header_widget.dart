@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:peludos_pet/app/view/pages/profile/profile_page.dart';
 
-// GlobalKey para controlar el Scaffold
 final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
 class HeaderWidget extends StatelessWidget {
-  final VoidCallback onMenuPressed; // Callback para abrir el Drawer
-  const HeaderWidget({super.key, required this.onMenuPressed});
+  final VoidCallback onMenuPressed; 
+  // ignore: use_super_parameters
+  const HeaderWidget({Key? key, required this.onMenuPressed}) : super(key: key);
 
   final tituloTextStyle = const TextStyle(
     color: Colors.white,
@@ -87,7 +87,7 @@ class HeaderWidget extends StatelessWidget {
               IconButton(
                 padding: const EdgeInsets.only(top: 15.0),
                 icon: const Icon(Icons.dehaze, color: Colors.black, size: 50.0),
-                onPressed: onMenuPressed, // Callback para abrir el Drawer
+                onPressed: onMenuPressed, 
               ),
               const SizedBox(width: 10.0),
               IconButton(

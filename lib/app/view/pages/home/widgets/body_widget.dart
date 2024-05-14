@@ -5,7 +5,6 @@ import 'package:peludos_pet/app/view/global_controller/session_controller.dart';
 import 'package:peludos_pet/app/view/pages/home/widgets/build_text_head.dart';
 import 'package:peludos_pet/app/view/pages/pets/widgets/build_Pets_Widgets.dart';
 
-
 class BodyWidget extends ConsumerWidget {
   const BodyWidget({super.key});
 
@@ -20,8 +19,7 @@ class BodyWidget extends ConsumerWidget {
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
-            return const Center(
-                child: CircularProgressIndicator()); // Cargando datos
+            return const Center(child: CircularProgressIndicator());
           }
 
           if (snapshot.hasError) {
@@ -29,7 +27,7 @@ class BodyWidget extends ConsumerWidget {
           }
 
           final petsWidgets = buildPetsWidgets(snapshot.data!);
-          
+
           return ListView(
             children: [
               Padding(

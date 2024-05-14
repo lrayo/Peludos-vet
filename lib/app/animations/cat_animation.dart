@@ -55,7 +55,7 @@ class _CatAnimationState extends State<CatAnimation> {
               duration: const Duration(seconds: 2),
               curve: Curves.easeInOut,
               top: _mostrarGato
-                  ? MediaQuery.of(context).size.height / 2 - 50
+                  ? MediaQuery.of(context).size.height / 2 - -10
                   : -100,
               left: MediaQuery.of(context).size.width / 2 - 50,
               child: SizedBox(

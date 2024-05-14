@@ -3,8 +3,8 @@ import 'package:flutter_meedu/meedu.dart';
 import 'package:flutter_meedu/ui.dart';
 import 'package:peludos_pet/app/domain/repositories/auth_repository.dart';
 import 'package:peludos_pet/app/view/routes/routes.dart';
-import 'package:peludos_pet/app/widgets/header_widget.dart';
-import 'package:peludos_pet/app/widgets/navegation_bar_widget.dart';
+import 'package:peludos_pet/app/view/pages/home/widgets/header_widget.dart';
+import 'package:peludos_pet/app/view/global_widget/navegation_bar_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   final List<Widget> bodyWidget; 
@@ -13,6 +13,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold( 
+        key: scaffoldKey,
         drawer: Drawer(
           child: ListView(
             children: [

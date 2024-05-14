@@ -1,12 +1,14 @@
+// ignore_for_file: file_names
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/ui.dart';
+import 'package:peludos_pet/app/view/pages/home/widgets/buttons_rec_res_widget.dart';
+import 'package:peludos_pet/app/view/pages/home/widgets/dividers_widget.dart';
+import 'package:peludos_pet/app/view/pages/home/widgets/info_pet_widget.dart';
+import 'package:peludos_pet/app/view/pages/home/widgets/next_dew_wigget.dart';
+import 'package:peludos_pet/app/view/pages/home/widgets/next_vac_dew_widget.dart';
 import 'package:peludos_pet/app/view/routes/routes.dart';
-import 'package:peludos_pet/app/widgets/page/welcome/buttons_rec_res_widget.dart';
-import 'package:peludos_pet/app/widgets/page/welcome/dividers_widget.dart';
-import 'package:peludos_pet/app/widgets/page/welcome/info_pet_widget.dart';
-import 'package:peludos_pet/app/widgets/page/welcome/next_dew_wigget.dart';
-import 'package:peludos_pet/app/widgets/page/welcome/next_vac_dew_widget.dart';
+
 
 List<Widget> buildPetsWidgets(DocumentSnapshot userDoc) {
   final pets = userDoc.exists && userDoc['pets'] != null

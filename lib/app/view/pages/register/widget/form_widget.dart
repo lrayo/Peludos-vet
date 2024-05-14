@@ -6,7 +6,7 @@ import 'package:peludos_pet/app/view/pages/login/utils/send_login_form.dart';
 import 'package:peludos_pet/app/view/pages/register/form_register.dart';
 import 'package:peludos_pet/app/view/pages/register/utils/send_register_form.dart';
 import 'package:peludos_pet/app/view/routes/routes.dart';
-import 'package:peludos_pet/app/widgets/button_widget.dart';
+import 'package:peludos_pet/app/view/global_widget/button_widget.dart';
 
 class FormLogin extends StatefulWidget {
   const FormLogin({super.key, required this.indice});
@@ -133,8 +133,8 @@ class _FormLoginState extends State<FormLogin> {
                         ],
                       ),
                       const SizedBox(height: 25.0),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                      Wrap(
+                        alignment: WrapAlignment.center,
                         children: [
                           Text(
                             _selectedIndex == 0

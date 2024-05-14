@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:peludos_pet/app/widgets/button_widget.dart';
-import 'package:peludos_pet/app/widgets/page/result/info_result_widget.dart';
-import 'package:peludos_pet/app/widgets/page/welcome/text_head_widget.dart';
+import 'package:peludos_pet/app/view/global_widget/button_widget.dart';
+import 'package:peludos_pet/app/view/pages/home/widgets/text_head_widget.dart';
+import 'package:peludos_pet/app/view/pages/result/widgets/info_result_widget.dart';
 
 class CardResults extends StatelessWidget {
   const CardResults ({super.key});

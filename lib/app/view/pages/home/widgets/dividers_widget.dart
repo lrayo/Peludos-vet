@@ -15,8 +15,8 @@ class Dividers extends StatelessWidget {
           child: Divider(
             // Línea separadora
             color: Colors.grey,
-            thickness: 1, // Grosor de la línea
-            height: 20, // Espacio vertical
+            thickness: 1,
+            height: 20, 
           ),
         ),
       ),

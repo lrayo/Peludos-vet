@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:peludos_pet/app/view/routes/routes.dart';
-import 'package:peludos_pet/app/widgets/button_widget.dart';
+import 'package:peludos_pet/app/view/global_widget/button_widget.dart';
 
 class ButtonsRecRes extends StatelessWidget {
   final String petId;

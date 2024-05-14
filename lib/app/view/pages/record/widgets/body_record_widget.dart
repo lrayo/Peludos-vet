@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/ui.dart';
 import 'package:peludos_pet/app/view/global_controller/session_controller.dart';
 import 'package:peludos_pet/app/view/pages/home/widgets/build_text_head.dart';
-import 'package:peludos_pet/app/widgets/page/welcome/info_pet_widget.dart';
+import 'package:peludos_pet/app/view/pages/home/widgets/info_pet_widget.dart';
 
 class BodyRecordWidget extends ConsumerWidget {
   const BodyRecordWidget({super.key});

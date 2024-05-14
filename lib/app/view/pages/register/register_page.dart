@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:peludos_pet/app/widgets/fondo.dart';
+import 'package:peludos_pet/app/view/pages/welcome/widgets/fondo.dart';
 import 'package:peludos_pet/app/view/pages/register/widget/form_widget.dart';
 
 class Register extends StatefulWidget {

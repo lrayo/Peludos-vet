@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:peludos_pet/app/widgets/page/result%20pdf/info_resultpdf_widget.dart';
+import 'package:peludos_pet/app/view/pages/result/widgets/result%20pdf/info_resultpdf_widget.dart';
 
 class CardResultsPdf extends StatelessWidget {
   const CardResultsPdf ({super.key});

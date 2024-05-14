@@ -6,7 +6,7 @@ import 'package:peludos_pet/app/animations/cat_animation.dart';
 import 'package:peludos_pet/app/view/global_controller/session_controller.dart';
 import 'package:peludos_pet/app/view/pages/welcome/controller/welcome_controller.dart';
 import 'package:peludos_pet/app/view/routes/routes.dart';
-import 'package:peludos_pet/app/widgets/button_widget.dart';
+import 'package:peludos_pet/app/view/global_widget/button_widget.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final welcomeProvider = SimpleProvider(
@@ -141,16 +141,16 @@ class _WelcomeState extends State<Welcome> {
                               ),
                             ),
                             TextSpan(
-                              text: 'et', // Resto del texto
+                              text: 'et', 
                               style: GoogleFonts.tapestry(
                                 textStyle: const TextStyle(
-                                  fontSize: 64.0, // Tamaño del resto del texto
+                                  fontSize: 64.0,
                                   color: Color(0xFFFFEFEF),
                                   shadows: [
                                     Shadow(
                                       blurRadius: 3.0,
                                       color: Color.fromARGB(
-                                          255, 0, 0, 0), // Color del contorno
+                                          255, 0, 0, 0), 
                                       offset: Offset(2, 0),
                                     ),
                                   ],

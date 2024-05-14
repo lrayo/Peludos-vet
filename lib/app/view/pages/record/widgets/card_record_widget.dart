@@ -2,9 +2,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/ui.dart';
 import 'package:peludos_pet/app/view/global_controller/session_controller.dart';
+import 'package:peludos_pet/app/view/pages/home/widgets/text_head_widget.dart';
 import 'package:peludos_pet/app/view/pages/record/widgets/info_record_widget.dart';
 import 'package:peludos_pet/app/view/routes/routes.dart';
-import 'package:peludos_pet/app/widgets/page/welcome/text_head_widget.dart';
 
 class CardRecord extends ConsumerWidget {
   const CardRecord({super.key});
