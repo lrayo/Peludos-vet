@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:peludos_pet/app/domain/inputs/deworming_data.dart';
+import 'package:peludos_pet/app/domain/inputs/medical_history_data.dart';
 import 'package:peludos_pet/app/domain/inputs/pet_up_data.dart';
 import 'package:peludos_pet/app/domain/inputs/vac_data.dart';
 import 'package:peludos_pet/app/domain/repositories/user_repository.dart';
@@ -137,6 +138,47 @@ class UserRepositoryImpl extends UserRepository {
       });
 
       return UserResponse(null, "Vaccination added successfully");
+    } on FirebaseException catch (e) {
+      final response = firebaseErrorToUserResponse(e.code);
+      return response;
+    }
+  }
+
+  @override
+  Future<UserResponse> addMedicalHistory(
+    String userId, String petId, MedicalHistoryData medicalHistoryData) async {
+    try {
+      final userDoc = await _firebaseFirestore.collection("users").doc(userId).get();
+
+      if (!userDoc.exists) {
+        return UserResponse(null, "User not found");
+      }
+
+      final pets = userDoc.data()?['pets'] as List<dynamic>;
+
+      final petIndex = pets.indexWhere((p) => p['petId'] == petId);
+
+      if (petIndex == -1) {
+        return UserResponse(null, "Pet not found");
+      }
+
+      final pet = pets[petIndex];
+
+      final List<dynamic> medicalHistories = pet.containsKey('medicalHistories')
+          ? pet['medicalHistories'] as List<dynamic>
+          : <dynamic>[];
+
+      medicalHistories.add(medicalHistoryData.toJson());
+
+      pet['medicalHistories'] = medicalHistories;
+
+      pets[petIndex] = pet;
+
+      await _firebaseFirestore.collection("users").doc(userId).update({
+        "pets": pets, 
+      });
+
+      return UserResponse(null, "Medical History added successfully");
     } on FirebaseException catch (e) {
       final response = firebaseErrorToUserResponse(e.code);
       return response;

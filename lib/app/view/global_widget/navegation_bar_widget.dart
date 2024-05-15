@@ -33,7 +33,7 @@ class _NavigationBarWidgetState extends State<NavigationBarWidget> {
           backgroundColor: Colors.green,
           icon: Icon(Icons.vaccines),
           label: "Results",
-        )
+        ),
       ],
       currentIndex: paginaActual,
       onTap: (value) {

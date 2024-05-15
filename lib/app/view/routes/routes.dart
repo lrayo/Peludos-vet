@@ -6,7 +6,6 @@ abstract class Routes {
   static const REGISTER = '/register';
   static const HOME = '/home';
   static const RECORD = '/record';
-  static const EVALUATION = '/Evaluation';
   static const RESULT = '/result';
   static const RESULTPDF = '/resultPdf';
   static const CHAT = '/chat';
@@ -14,6 +13,7 @@ abstract class Routes {
   static const PETS = '/pets';
   static const VACCINATION = '/ vaccination';
   static const DEWORMING = '/deworming';
+  static const ADD_MEDICAL_HISTORY = '/add_medical_history';
   static const PETUPDATE = '/petupdate';
   static const PROFILE = '/profile';
   static const SETTINGS = '/settings';

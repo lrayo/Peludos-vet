@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:peludos_pet/app/view/pages/profile/profile_page.dart';
 
-final GlobalKey<ScaffoldState> scaffoldKey = GlobalKey<ScaffoldState>();
 
 class HeaderWidget extends StatelessWidget {
   final VoidCallback onMenuPressed; 

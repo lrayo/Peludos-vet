@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_meedu/ui.dart';
 import 'package:peludos_pet/app/view/global_controller/session_controller.dart';
 import 'package:peludos_pet/app/view/pages/home/widgets/text_head_widget.dart';
+import 'package:peludos_pet/app/view/pages/medical_history/medical_history_detail.dart';
 import 'package:peludos_pet/app/view/pages/record/widgets/info_record_widget.dart';
 import 'package:peludos_pet/app/view/routes/routes.dart';
 
@@ -50,36 +51,50 @@ class CardRecord extends ConsumerWidget {
             ? selectedPet['dewormings'] as List<dynamic>
             : <dynamic>[];
 
+        final medicalHistories = selectedPet.containsKey('medicalHistories')
+            ? selectedPet['medicalHistories'] as List<dynamic>
+            : <dynamic>[];
+
         final List<String> namesVaccination = [];
-final List<String> namesDeworming = [];
-final List<DateTime> vaccinationDates = [];
-final List<DateTime> dewormingDates = [];
+        final List<String> namesDeworming = [];
+        final List<DateTime> vaccinationDates = [];
+        final List<DateTime> dewormingDates = [];
+        final List<DateTime> medicalHistoryDates = [];
+        final List<String> medicalHistoryDescriptions = [];
+        final List<String> reasonForConsultation = [];
+        final petid = selectedPet['petId'] as String;
 
 // Obtener los nombres de vacunación y las fechas
-for (var vaccination in vaccinations) {
-  final name = vaccination['nameVaccination'];
-  final date = DateTime.parse(vaccination['vaccinationDate']);
-  if (name != null) {
-    namesVaccination.add(name);
-    vaccinationDates.add(date);
-  }
-}
-
-// Ordenar las vacunaciones por fecha
-// final List<Map<String, dynamic>> sortedVaccinations = List.from(vaccinations)..sort((a, b) => DateTime.parse(b['vaccinationDate']).compareTo(DateTime.parse(a['vaccinationDate'])));
+        for (var vaccination in vaccinations) {
+          final name = vaccination['nameVaccination'];
+          final date = DateTime.parse(vaccination['vaccinationDate']);
+          if (name != null) {
+            namesVaccination.add(name);
+            vaccinationDates.add(date);
+          }
+        }
 
 // Obtener los nombres de desparasitación y las fechas
-for (var deworming in dewormings) {
-  final name = deworming['namedeworming'];
-  final date = DateTime.parse(deworming['dewormingDate']);
-  if (name != null) {
-    namesDeworming.add(name);
-    dewormingDates.add(date);
-  }
-}
+        for (var medicalHistory in medicalHistories) {
+          final reasonForConsultaion = medicalHistory['reasonForonsultation'];
+          final description = medicalHistory['description'];
+          final date = DateTime.parse(medicalHistory['medicalHistoryDate']);
+          if (reasonForConsultaion != null) {
+            reasonForConsultation.add(reasonForConsultaion);
+            medicalHistoryDescriptions.add(description);
+            medicalHistoryDates.add(date);
+          }
+        }
 
-// Ordenar las desparasitaciones por fecha
-// final List<Map<String, dynamic>> sortedDewormings = List.from(dewormings)..sort((a, b) => DateTime.parse(b['dewormingDate']).compareTo(DateTime.parse(a['dewormingDate'])));
+        // Obtener los nombres de desparasitación y las fechas
+        for (var deworming in dewormings) {
+          final name = deworming['namedeworming'];
+          final date = DateTime.parse(deworming['dewormingDate']);
+          if (name != null) {
+            namesDeworming.add(name);
+            dewormingDates.add(date);
+          }
+        }
 
         return ListView(
           children: [
@@ -110,10 +125,10 @@ for (var deworming in dewormings) {
                           final date = vaccinationDates[index];
                           return InfoRecord(
                             title: 'Vaccination: ',
-                            description:  namesVaccination[index],
+                            description: namesVaccination[index],
                             date: date,
                             onTap: () {
-                              router.pushNamed(Routes.VACCINATION);
+                              router.pushNamed(Routes.VACCINATION, arguments: petId);
                             },
                           );
                         },
@@ -125,21 +140,38 @@ for (var deworming in dewormings) {
                           final date = dewormingDates[index];
                           return InfoRecord(
                             title: 'Deworming: ',
-                            description:  namesDeworming[index],
+                            description: namesDeworming[index],
                             date: date,
                             onTap: () {
-                              router.pushNamed(Routes.DEWORMING);
+                              router.pushNamed(Routes.DEWORMING, arguments: petId);
                             },
                           );
                         },
                       ),
-                      InfoRecord(
-                        title: 'Medical History: ',
-                        description: 'Medical History: ',
-                        date: DateTime
-                            .now(), 
-                        onTap: () {
-                          
+                      ListView.builder(
+                        shrinkWrap: true,
+                        itemCount: medicalHistories.length,
+                        itemBuilder: (context, index) {
+                          final date = medicalHistoryDates[index];
+                          return InfoRecord(
+                            title: 'Medical History:',
+                            description: reasonForConsultation[index],
+                            date: date,
+                            onTap: () {
+                              Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => MedicalHistoryDetail(
+              petID: petid,
+              title: 'Medical History Detail',
+              date: date,
+              reasonForConsultation: reasonForConsultation[index],
+              description: medicalHistoryDescriptions[index],
+            ),
+          ),
+        );
+                            },
+                          );
                         },
                       ),
                     ],

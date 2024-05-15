@@ -3,9 +3,9 @@ import 'package:peludos_pet/app/view/pages/Vaccination/vaccination_page.dart';
 import 'package:peludos_pet/app/view/pages/deworming/dewormig_page.dart';
 import 'package:peludos_pet/app/view/pages/home/home_page.dart';
 import 'package:peludos_pet/app/view/pages/login/login_page.dart';
+import 'package:peludos_pet/app/view/pages/medical_history/add_medical_history_page.dart';
 import 'package:peludos_pet/app/view/pages/pets/pet_update_page.dart';
 import 'package:peludos_pet/app/view/pages/pets/pets_page.dart';
-import 'package:peludos_pet/app/view/pages/record/record_evaluation_page.dart';
 import 'package:peludos_pet/app/view/pages/record/record_page.dart';
 import 'package:peludos_pet/app/view/pages/register/register_page.dart';
 import 'package:peludos_pet/app/view/pages/reset_password/reset_password_page.dart';
@@ -20,7 +20,6 @@ Map<String, Widget Function(BuildContext)> get appRoutes => {
   Routes.LOGIN: (context) => const Login(),
   Routes.REGISTER: (context) => const Register(),
   Routes.RECORD: (context) => const Record(),
-  Routes.EVALUATION: (context) => const Evaluation(),
   Routes.RESULT: (context) => const Result(),
   Routes.RESULTPDF: (context) => const ResutlPdf(),
   Routes.RESET_PASSWORD: (context) => const ResetPassword(), 
@@ -29,4 +28,5 @@ Map<String, Widget Function(BuildContext)> get appRoutes => {
   Routes.PETUPDATE: (context) => const PetUpdate(),
   Routes.VACCINATION: (context) => const Vaccination(),
   Routes.DEWORMING: (context) => const Deworming(),
+  Routes.ADD_MEDICAL_HISTORY: (context) => const AddMedicalHistory(),
 };

@@ -8,8 +8,8 @@ class ResutlPdf extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: HomeScreen(bodyWidget: [BodyRecordWidget(),
+    return  Scaffold(
+      body: HomeScreen(bodyWidget: const [BodyRecordWidget(),
           CardResultsPdf(),])
       
     );

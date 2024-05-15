@@ -40,13 +40,15 @@ class InfoRecord extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(left: 20.0),
-                      child: Text(
-                        description,
-                        style: const TextStyle(
-                          fontSize: 20.0,
-                          color: Colors.black,
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 20.0, right: 20.0),
+                        child: Text(
+                          description,
+                          style: const TextStyle(
+                            fontSize: 20.0,
+                            color: Colors.black,
+                          ),
                         ),
                       ),
                     ),
