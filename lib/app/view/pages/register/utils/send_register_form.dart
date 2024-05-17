@@ -38,15 +38,24 @@ Future<void> sendRegisterForm(BuildContext context) async {
           break;
       }
 
-      Dialogs.alert(
-        context,
-        title: 'Error',
-        content: content,
-      );
+      if (context.mounted) {
+        Dialogs.alert(
+          context,
+          title: 'Error',
+          content: content,
+        );
+      }
     } else {
-      router.pushNamedAndRemoveUntil(Routes.HOME);
+      if (context.mounted) {
+        router.pushNamedAndRemoveUntil(
+          Routes.LOGIN,
+           predicate: (_) => false, 
+        );
+      }
     }
   } else {
-    Dialogs.alert(context, title: "Error", content: "Invalid fields");
+    if (context.mounted) {
+      Dialogs.alert(context, title: "Error", content: "Invalid fields");
+    }
   }
 }

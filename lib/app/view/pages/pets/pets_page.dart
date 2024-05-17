@@ -67,7 +67,7 @@ class Pets extends StatelessWidget {
                                       child: IconButton(
                                         icon: const Icon(Icons.photo_library,
                                             color: Colors
-                                                .blue), // Ícono para subir desde galería
+                                                .blue), 
                                         onPressed: () {
                                           controller
                                               .selectAndUploadImage(context);
@@ -80,7 +80,7 @@ class Pets extends StatelessWidget {
                                       child: IconButton(
                                         icon: const Icon(Icons.camera_alt,
                                             color: Colors
-                                                .blue), // Ícono para tomar foto
+                                                .blue), 
                                         onPressed: () {
                                           controller.uploadFromCamera(context);
                                         },

@@ -18,13 +18,17 @@ class BodyWidget extends ConsumerWidget {
             .doc(user.uid)
             .snapshots(),
         builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return const Center(child: CircularProgressIndicator());
-          }
+          if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        }
 
-          if (snapshot.hasError) {
-            return const Center(child: Text("Error loading data"));
-          }
+        if (snapshot.hasError) {
+          return const Center(child: Text("Error loading data"));
+        }
+
+        if (!snapshot.hasData || !snapshot.data!.exists) {
+          return const Center(child: Text("No data available"));
+        }
 
           final petsWidgets = buildPetsWidgets(snapshot.data!);
 
@@ -43,7 +47,7 @@ class BodyWidget extends ConsumerWidget {
                     ),
                     child: Column(
                       children: <Widget>[
-                        buildTextHead(ref),
+                        buildTextHead(ref, "My pets"),
                         const SizedBox(height: 20.0),
                         SizedBox(
                           width: double.infinity,

@@ -1,5 +1,6 @@
 import 'package:peludos_pet/app/domain/inputs/deworming_data.dart';
 import 'package:peludos_pet/app/domain/inputs/medical_history_data.dart';
+import 'package:peludos_pet/app/domain/inputs/result_data.dart';
 import 'package:peludos_pet/app/domain/inputs/vac_data.dart';
 
 class PetUpData {
@@ -13,6 +14,7 @@ class PetUpData {
   final List<VaccinationData> vaccinations;
   final List<DewormingData> dewormings;
   final List<MedicalHistoryData> medicalhistories;
+  final List<ResultData> results;
 
   PetUpData({
     required this.petId,
@@ -25,6 +27,7 @@ class PetUpData {
     this.vaccinations = const [],
     this.dewormings = const [],
     this.medicalhistories = const [],
+    this.results = const [],
   });
 
   Map<String, dynamic> toJson() {
@@ -39,6 +42,7 @@ class PetUpData {
       'vaccinations': vaccinations.map((v) => v.toJson()).toList(),
       'dewormings': dewormings.map((v) => v.toJson()).toList(),
       'medicalHistory': medicalhistories.map((v) => v.toJson()).toList(),
+      'result': results.map((v) => v.toJson()).toList(),
     };
   }
 }

@@ -6,6 +6,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:peludos_pet/app/domain/inputs/deworming_data.dart';
 import 'package:peludos_pet/app/domain/inputs/medical_history_data.dart';
 import 'package:peludos_pet/app/domain/inputs/pet_up_data.dart';
+import 'package:peludos_pet/app/domain/inputs/result_data.dart';
 import 'package:peludos_pet/app/domain/inputs/vac_data.dart';
 import 'package:peludos_pet/app/domain/repositories/user_repository.dart';
 import 'package:peludos_pet/app/domain/responses/user_response.dart';
@@ -45,19 +46,14 @@ class UserRepositoryImpl extends UserRepository {
   @override
   Future<String?> imagePets(String userId, XFile image) async {
     try {
-      final filePath =
-          "pets/$userId/${DateTime.now().toString()}"; // Ruta en Storage
-      final ref =
-          storage.ref().child(filePath); // Referencia al archivo en Storage
+      final filePath = "pets/$userId/${DateTime.now().toString()}";
+      final ref = storage.ref().child(filePath);
 
-      final uploadTask =
-          ref.putFile(File(image.path)); // Sube el archivo a Storage
+      final uploadTask = ref.putFile(File(image.path));
       await uploadTask.whenComplete(() => null);
 
-      final path =
-          await ref.getDownloadURL(); // Esperar a que termine la subida
-
-      return path; // Devuelve la URL de la imagen subida
+      final path = await ref.getDownloadURL();
+      return path;
     } on FirebaseException catch (e) {
       final response = firebaseErrorToUserResponse(e.code);
       return response;
@@ -68,7 +64,8 @@ class UserRepositoryImpl extends UserRepository {
   Future<UserResponse> addDeworming(
       String userId, String petId, DewormingData dewormingData) async {
     try {
-      final userDoc = await _firebaseFirestore.collection("users").doc(userId).get();
+      final userDoc =
+          await _firebaseFirestore.collection("users").doc(userId).get();
 
       if (!userDoc.exists) {
         return UserResponse(null, "User not found");
@@ -94,7 +91,7 @@ class UserRepositoryImpl extends UserRepository {
 
       pets[petIndex] = pet;
       await _firebaseFirestore.collection("users").doc(userId).update({
-        "pets": pets, 
+        "pets": pets,
       });
 
       return UserResponse(null, "dewormings added successfully");
@@ -108,7 +105,8 @@ class UserRepositoryImpl extends UserRepository {
   Future<UserResponse> addVaccination(
       String userId, String petId, VaccinationData vaccinationData) async {
     try {
-      final userDoc = await _firebaseFirestore.collection("users").doc(userId).get();
+      final userDoc =
+          await _firebaseFirestore.collection("users").doc(userId).get();
 
       if (!userDoc.exists) {
         return UserResponse(null, "User not found");
@@ -134,7 +132,7 @@ class UserRepositoryImpl extends UserRepository {
 
       pets[petIndex] = pet;
       await _firebaseFirestore.collection("users").doc(userId).update({
-        "pets": pets, 
+        "pets": pets,
       });
 
       return UserResponse(null, "Vaccination added successfully");
@@ -145,10 +143,11 @@ class UserRepositoryImpl extends UserRepository {
   }
 
   @override
-  Future<UserResponse> addMedicalHistory(
-    String userId, String petId, MedicalHistoryData medicalHistoryData) async {
+  Future<UserResponse> addMedicalHistory(String userId, String petId,
+      MedicalHistoryData medicalHistoryData) async {
     try {
-      final userDoc = await _firebaseFirestore.collection("users").doc(userId).get();
+      final userDoc =
+          await _firebaseFirestore.collection("users").doc(userId).get();
 
       if (!userDoc.exists) {
         return UserResponse(null, "User not found");
@@ -175,10 +174,85 @@ class UserRepositoryImpl extends UserRepository {
       pets[petIndex] = pet;
 
       await _firebaseFirestore.collection("users").doc(userId).update({
-        "pets": pets, 
+        "pets": pets,
       });
 
       return UserResponse(null, "Medical History added successfully");
+    } on FirebaseException catch (e) {
+      final response = firebaseErrorToUserResponse(e.code);
+      return response;
+    }
+  }
+
+  @override
+  Future<UserResponse> addresult(
+      String userId, String petId, ResultData resultData) async {
+    try {
+      final userDoc =
+          await _firebaseFirestore.collection("users").doc(userId).get();
+
+      if (!userDoc.exists) {
+        return UserResponse(null, "User not found");
+      }
+
+      final pets = userDoc.data()?['pets'] as List<dynamic>;
+
+      final petIndex = pets.indexWhere((p) => p['petId'] == petId);
+
+      if (petIndex == -1) {
+        return UserResponse(null, "Pet not found");
+      }
+
+      final pet = pets[petIndex];
+
+      final List<dynamic> results = pet.containsKey('results')
+          ? pet['results'] as List<dynamic>
+          : <dynamic>[];
+
+      results.add(resultData.toJson());
+
+      pet['results'] = results;
+
+      pets[petIndex] = pet;
+
+      await _firebaseFirestore.collection("users").doc(userId).update({
+        "pets": pets,
+      });
+
+      return UserResponse(null, "results added successfully");
+    } on FirebaseException catch (e) {
+      final response = firebaseErrorToUserResponse(e.code);
+      return response;
+    }
+  }
+
+  @override
+  Future<String?> uploadPDF(String userId, String petId, XFile pdfFile) async {
+  try {
+    final filePath = "pdfs/$userId/$petId/${DateTime.now().toString()}";
+    final ref = storage.ref().child(filePath);
+
+    final uploadTask = ref.putFile(File(pdfFile.path));
+    await uploadTask.whenComplete(() => null);
+
+    final url = await ref.getDownloadURL();
+
+    return url;
+  } on FirebaseException catch (e) {
+    final response = firebaseErrorToUserResponse(e.code);
+    return response;
+  }
+}
+
+  @override
+  Future<File?> downloadPDF(String pdfURL, String fileName) async {
+    try {
+      final ref = storage.refFromURL(pdfURL);
+
+      final File downloadFile = File('/path/to/downloads/$fileName');
+      await ref.writeToFile(downloadFile);
+
+      return downloadFile;
     } on FirebaseException catch (e) {
       final response = firebaseErrorToUserResponse(e.code);
       return response;

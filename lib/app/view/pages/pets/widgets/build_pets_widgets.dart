@@ -2,6 +2,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meedu/ui.dart';
+import 'package:peludos_pet/app/view/global_widget/button_widget.dart';
 import 'package:peludos_pet/app/view/pages/home/widgets/buttons_rec_res_widget.dart';
 import 'package:peludos_pet/app/view/pages/home/widgets/dividers_widget.dart';
 import 'package:peludos_pet/app/view/pages/home/widgets/info_pet_widget.dart';
@@ -14,6 +15,24 @@ List<Widget> buildPetsWidgets(DocumentSnapshot userDoc) {
   final pets = userDoc.exists && userDoc['pets'] != null
       ? userDoc['pets'] as List<dynamic>
       : [];
+
+  if (pets.isEmpty) {
+    return [
+      Center(
+        child: Padding(
+          padding: const EdgeInsets.only(top: 200.0),
+          child: SizedBox(
+            width: 200.0,
+            child: Button(text: 'Add pet', onPressed: () {
+              router.pushNamed(Routes.PETS);
+            }	
+            ),
+          ),
+        ),
+      ),
+    ];
+  } 
+      
   return pets.map((pet) {
     final petId = pet['petId'];
     final name = pet['name'];

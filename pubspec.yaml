@@ -25,6 +25,11 @@ dependencies:
   firebase_storage: ^11.7.4
   firebase_app_check: ^0.2.2+5
   uuid: ^4.4.0
+  logger: ^2.3.0
+  file_picker: ^8.0.3
+  pdf_viewer_flutter: ^1.0.2
+
+
   
   
 

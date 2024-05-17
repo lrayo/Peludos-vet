@@ -113,7 +113,7 @@ class _DewormingState extends State<Deworming> {
                             onPressed: () {
                               sendAddDeworming(context);
                             },
-                            child: const Text('Add vaccination'),
+                            child: const Text('Add Deworming'),
                           )
                         ],
                       ),

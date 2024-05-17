@@ -15,6 +15,7 @@ abstract class Routes {
   static const DEWORMING = '/deworming';
   static const ADD_MEDICAL_HISTORY = '/add_medical_history';
   static const PETUPDATE = '/petupdate';
+  static const ADD_RESULT = '/add_result';
   static const PROFILE = '/profile';
   static const SETTINGS = '/settings';
   static const NOT_FOUND = '/not-found';

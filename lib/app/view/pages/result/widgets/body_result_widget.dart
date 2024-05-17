@@ -5,8 +5,8 @@ import 'package:peludos_pet/app/view/global_controller/session_controller.dart';
 import 'package:peludos_pet/app/view/pages/home/widgets/build_text_head.dart';
 import 'package:peludos_pet/app/view/pages/home/widgets/info_pet_widget.dart';
 
-class BodyRecordWidget extends ConsumerWidget {
-  const BodyRecordWidget({super.key});
+class BodyResultWidget extends ConsumerWidget {
+  const BodyResultWidget({super.key});
 
   @override
   Widget build(BuildContext context, ref) {
@@ -60,7 +60,7 @@ class BodyRecordWidget extends ConsumerWidget {
                     ),
                     child: Column(
                       children: <Widget>[
-                        buildTextHead(ref, 'Record of '),
+                        buildTextHead(ref, 'Result of '),
                          Pet(
                           imagePath:
                               photo ?? 'https://via.placeholder.com/150',

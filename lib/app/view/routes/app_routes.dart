@@ -9,6 +9,7 @@ import 'package:peludos_pet/app/view/pages/pets/pets_page.dart';
 import 'package:peludos_pet/app/view/pages/record/record_page.dart';
 import 'package:peludos_pet/app/view/pages/register/register_page.dart';
 import 'package:peludos_pet/app/view/pages/reset_password/reset_password_page.dart';
+import 'package:peludos_pet/app/view/pages/result/result_form_page.dart';
 import 'package:peludos_pet/app/view/pages/result/result_page.dart';
 import 'package:peludos_pet/app/view/pages/result/result_pdf_page.dart';
 import 'package:peludos_pet/app/view/pages/welcome/welcome_page.dart';
@@ -29,4 +30,5 @@ Map<String, Widget Function(BuildContext)> get appRoutes => {
   Routes.VACCINATION: (context) => const Vaccination(),
   Routes.DEWORMING: (context) => const Deworming(),
   Routes.ADD_MEDICAL_HISTORY: (context) => const AddMedicalHistory(),
+  Routes.ADD_RESULT: (context) => const ResultForm(),
 };
