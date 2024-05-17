@@ -58,7 +58,10 @@ class _ResultFormState extends State<ResultForm> {
 
           return Scaffold(
             backgroundColor: Colors.white,
-            appBar: AppBar(),
+            appBar: AppBar(
+              title: const Text('Add Result'),
+              centerTitle: true,
+            ),
             body: GestureDetector(
               onTap: () {
                 FocusScope.of(context).unfocus();
@@ -69,87 +72,107 @@ class _ResultFormState extends State<ResultForm> {
                   padding: const EdgeInsets.only(left: 25.0, right: 25.0),
                   color: Colors.transparent,
                   child: SingleChildScrollView(
-                    child:  ConstrainedBox(constraints: BoxConstraints(
-                      minHeight: MediaQuery.of(context).size.height - 100,
-                    ),
-                    child: Column(
-                      
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                      const SizedBox(height: 20.0),
-                      Form(
-                        key: controller.formKey,
-                        child: Column(
-                          children: <Widget>[
-                            
-                            const Center(
-                              child: Text(
-                                'Result Form',
-                                style: TextStyle(
-                                  fontSize: 30,
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ),
-                            CustonInputField(
-                              label: 'Exam Name',
-                              onChanged: controller.setExamName,
-                              validator: (text) {
-                                return isValidNameResult(text!) ? null : 'Invalid name';
-                              },
-                            ),
-                            TextFormField(
-                              controller: TextEditingController(
-                                text: selectedDate != null
-                                    ? DateFormat.yMd().format(selectedDate!)
-                                    : '',
-                              ),
-                              decoration: InputDecoration(
-                                labelText: 'Date',
-                                suffixIcon: IconButton(
-                                  icon: const Icon(Icons.calendar_today),
-                                  onPressed: () =>
-                                      _selectDate(context, controller),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 20.0),
-                            Button(text: 'Select PDF', onPressed: () async{
-                                FilePickerResult? result =
-                                    await FilePicker.platform.pickFiles(
-                                  type: FileType.custom,
-                                  allowedExtensions: ['pdf'],
-                                );
-                
-                                if (result != null) {
-                                  XFile file = XFile(result.files.single.path!);
-                                  await controller.uploadPDF(context, file);
-                                }
-                              },
-                            ),
-                            if (state.state.pdfURL.isNotEmpty)
-                              const Padding(padding: EdgeInsets.only(top: 20.0), 
-                              child: Text('PDF uploaded successfully', style: TextStyle(color: Colors.green))),
-                              
-                            const SizedBox(
-                              height: 120.0,
-                            ),
-                            Container(
-                              width: 300.0,
-                              child: Button(text: 'Add result', onPressed: () {
-                                sendAddResutl(context);
-                              }),
-                            ),
-                          ],
-                        ),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(
+                        minHeight: MediaQuery.of(context).size.height - 100,
                       ),
-                    ],
-                    ),
-                    ),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          const SizedBox(height: 20.0),
+                          Form(
+                            key: controller.formKey,
+                            child: Column(
+                              children: <Widget>[
+                                Container(
+                                  width: MediaQuery.of(context).size.width,
+                                  decoration: BoxDecoration(
+                                    border: Border.all(
+                                        color: Colors.black, width: 5),
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  child: Image.asset(
+                                    'assets/Perros-y-gatos-juntos.jpeg',
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                                const SizedBox(height: 20.0),
+                                const Center(
+                                  child: Text(
+                                    'Result Form',
+                                    style: TextStyle(
+                                      fontSize: 30,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ),
+                                CustonInputField(
+                                  label: 'Exam Name',
+                                  onChanged: controller.setExamName,
+                                  validator: (text) {
+                                    return isValidNameResult(text!)
+                                        ? null
+                                        : 'Invalid name';
+                                  },
+                                ),
+                                TextFormField(
+                                  controller: TextEditingController(
+                                    text: selectedDate != null
+                                        ? DateFormat.yMd().format(selectedDate!)
+                                        : '',
+                                  ),
+                                  decoration: InputDecoration(
+                                    labelText: 'Date',
+                                    suffixIcon: IconButton(
+                                      icon: const Icon(Icons.calendar_today),
+                                      onPressed: () =>
+                                          _selectDate(context, controller),
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 20.0),
+                                Button(
+                                  text: 'Select PDF',
+                                  onPressed: () async {
+                                    FilePickerResult? result =
+                                        await FilePicker.platform.pickFiles(
+                                      type: FileType.custom,
+                                      allowedExtensions: ['pdf'],
+                                    );
 
-                    
+                                    if (result != null) {
+                                      XFile file =
+                                          XFile(result.files.single.path!);
+                                      await controller.uploadPDF(context, file);
+                                    }
+                                  },
+                                ),
+                                if (state.state.pdfURL.isNotEmpty)
+                                  const Padding(
+                                      padding: EdgeInsets.only(top: 20.0),
+                                      child: Text('PDF uploaded successfully',
+                                          style:
+                                              TextStyle(color: Colors.green))),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
                 ),
+              ),
+            ),
+            bottomSheet: Container(
+              width: 200.0,
+              padding:
+                  const EdgeInsets.symmetric(vertical: 30.0, horizontal: 20.0),
+              color: Colors.white,
+              child: Button(
+                text: 'Add result',
+                onPressed: () {
+                  sendAddResutl(context);
+                },
               ),
             ),
           );
