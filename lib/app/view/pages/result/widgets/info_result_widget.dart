@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class InfoResults extends StatelessWidget {
 
   final String description; 
-  final String date;
+  final DateTime date;
+  final VoidCallback onTap;
 
   const InfoResults({
-    super.key, required this.description, required this.date,
+    super.key, required this.description, required this.date, required this.onTap, 
   });
 
-  void _navigateToEvaluation(BuildContext context) {
-    Navigator.pushNamed(context, '/resultPdf'); // Navegar a la página de evaluación
-  }
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class InfoResults extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => _navigateToEvaluation(context),
+            onTap: onTap,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -37,7 +37,8 @@ class InfoResults extends StatelessWidget {
                 Padding(
                   padding: const EdgeInsets.only(right: 20.0),
                   child: Text(
-                    date,
+                    DateFormat('d/M/yyyy').format(
+                            date),
                     style: const TextStyle(
                       fontSize: 20.0,
                       color: Colors.black,

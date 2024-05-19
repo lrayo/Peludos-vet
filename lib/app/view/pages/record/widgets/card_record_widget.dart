@@ -128,7 +128,8 @@ class CardRecord extends ConsumerWidget {
                             description: namesVaccination[index],
                             date: date,
                             onTap: () {
-                              router.pushNamed(Routes.VACCINATION, arguments: petId);
+                              router.pushNamed(Routes.VACCINATION,
+                                  arguments: petId);
                             },
                           );
                         },
@@ -143,7 +144,8 @@ class CardRecord extends ConsumerWidget {
                             description: namesDeworming[index],
                             date: date,
                             onTap: () {
-                              router.pushNamed(Routes.DEWORMING, arguments: petId);
+                              router.pushNamed(Routes.DEWORMING,
+                                  arguments: petId);
                             },
                           );
                         },
@@ -159,17 +161,19 @@ class CardRecord extends ConsumerWidget {
                             date: date,
                             onTap: () {
                               Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => MedicalHistoryDetail(
-              petID: petid,
-              title: 'Medical History Detail',
-              date: date,
-              reasonForConsultation: reasonForConsultation[index],
-              description: medicalHistoryDescriptions[index],
-            ),
-          ),
-        );
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) => MedicalHistoryDetail(
+                                    petID: petid,
+                                    title: 'Medical History Detail',
+                                    date: date,
+                                    reasonForConsultation:
+                                        reasonForConsultation[index],
+                                    description:
+                                        medicalHistoryDescriptions[index],
+                                  ),
+                                ),
+                              );
                             },
                           );
                         },

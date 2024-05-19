@@ -12,6 +12,7 @@ import 'package:peludos_pet/app/domain/inputs/result_data.dart';
 import 'package:peludos_pet/app/domain/repositories/user_repository.dart';
 import 'package:peludos_pet/app/domain/responses/user_response.dart';
 import 'package:peludos_pet/app/view/pages/result/result_state.dart';
+import 'package:uuid/uuid.dart';
 
 final logger = Logger();
 
@@ -29,6 +30,7 @@ class ResultController extends StateNotifier<ResultState> {
         userId,
         petId!,
         ResultData(
+          resultId: const Uuid().v4(),
             resultDate: state.resultDate,
             pdfURL: state.pdfURL,
             examName: state.examName));

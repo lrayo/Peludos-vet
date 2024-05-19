@@ -16,6 +16,7 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$ResultState {
+  String get resultId => throw _privateConstructorUsedError;
   String get examName => throw _privateConstructorUsedError;
   String get pdfURL => throw _privateConstructorUsedError;
   DateTime get resultDate => throw _privateConstructorUsedError;
@@ -33,7 +34,11 @@ abstract class $ResultStateCopyWith<$Res> {
       _$ResultStateCopyWithImpl<$Res, ResultState>;
   @useResult
   $Res call(
-      {String examName, String pdfURL, DateTime resultDate, bool termsOK});
+      {String resultId,
+      String examName,
+      String pdfURL,
+      DateTime resultDate,
+      bool termsOK});
 }
 
 /// @nodoc
@@ -49,12 +54,17 @@ class _$ResultStateCopyWithImpl<$Res, $Val extends ResultState>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? resultId = null,
     Object? examName = null,
     Object? pdfURL = null,
     Object? resultDate = null,
     Object? termsOK = null,
   }) {
     return _then(_value.copyWith(
+      resultId: null == resultId
+          ? _value.resultId
+          : resultId // ignore: cast_nullable_to_non_nullable
+              as String,
       examName: null == examName
           ? _value.examName
           : examName // ignore: cast_nullable_to_non_nullable
@@ -84,7 +94,11 @@ abstract class _$$ResultStateImplCopyWith<$Res>
   @override
   @useResult
   $Res call(
-      {String examName, String pdfURL, DateTime resultDate, bool termsOK});
+      {String resultId,
+      String examName,
+      String pdfURL,
+      DateTime resultDate,
+      bool termsOK});
 }
 
 /// @nodoc
@@ -98,12 +112,17 @@ class __$$ResultStateImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? resultId = null,
     Object? examName = null,
     Object? pdfURL = null,
     Object? resultDate = null,
     Object? termsOK = null,
   }) {
     return _then(_$ResultStateImpl(
+      resultId: null == resultId
+          ? _value.resultId
+          : resultId // ignore: cast_nullable_to_non_nullable
+              as String,
       examName: null == examName
           ? _value.examName
           : examName // ignore: cast_nullable_to_non_nullable
@@ -128,11 +147,15 @@ class __$$ResultStateImplCopyWithImpl<$Res>
 
 class _$ResultStateImpl implements _ResultState {
   _$ResultStateImpl(
-      {this.examName = '',
+      {this.resultId = '',
+      this.examName = '',
       this.pdfURL = '',
       required this.resultDate,
       this.termsOK = false});
 
+  @override
+  @JsonKey()
+  final String resultId;
   @override
   @JsonKey()
   final String examName;
@@ -147,7 +170,7 @@ class _$ResultStateImpl implements _ResultState {
 
   @override
   String toString() {
-    return 'ResultState(examName: $examName, pdfURL: $pdfURL, resultDate: $resultDate, termsOK: $termsOK)';
+    return 'ResultState(resultId: $resultId, examName: $examName, pdfURL: $pdfURL, resultDate: $resultDate, termsOK: $termsOK)';
   }
 
   @override
@@ -155,6 +178,8 @@ class _$ResultStateImpl implements _ResultState {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$ResultStateImpl &&
+            (identical(other.resultId, resultId) ||
+                other.resultId == resultId) &&
             (identical(other.examName, examName) ||
                 other.examName == examName) &&
             (identical(other.pdfURL, pdfURL) || other.pdfURL == pdfURL) &&
@@ -165,7 +190,7 @@ class _$ResultStateImpl implements _ResultState {
 
   @override
   int get hashCode =>
-      Object.hash(runtimeType, examName, pdfURL, resultDate, termsOK);
+      Object.hash(runtimeType, resultId, examName, pdfURL, resultDate, termsOK);
 
   @JsonKey(ignore: true)
   @override
@@ -176,11 +201,14 @@ class _$ResultStateImpl implements _ResultState {
 
 abstract class _ResultState implements ResultState {
   factory _ResultState(
-      {final String examName,
+      {final String resultId,
+      final String examName,
       final String pdfURL,
       required final DateTime resultDate,
       final bool termsOK}) = _$ResultStateImpl;
 
+  @override
+  String get resultId;
   @override
   String get examName;
   @override

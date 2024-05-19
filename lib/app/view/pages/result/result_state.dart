@@ -8,6 +8,7 @@ part 'result_state.freezed.dart';
 class ResultState with _$ResultState {
   
   factory ResultState({
+    @Default('') String resultId,
     @Default('') String examName,
     @Default('') String pdfURL,
     required DateTime resultDate,
